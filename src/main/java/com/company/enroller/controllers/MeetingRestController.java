@@ -21,7 +21,7 @@ public class MeetingRestController {
 	public ResponseEntity<?> getMeetings(@RequestParam(value = "sortBy", defaultValue = "") String sortBy,
 											 @RequestParam(value = "sortOrder", defaultValue = "")String sortOrder,
 											 @RequestParam(value = "key", defaultValue = "")String key) {
-		Collection<Meeting> meetings = meetingService.getAll(sortBy, sortOrder, key);
+		Collection<Meeting> meetings = meetingService.getAll();
 		return new ResponseEntity<Collection<Meeting>>(meetings, HttpStatus.OK);
 	}
 
