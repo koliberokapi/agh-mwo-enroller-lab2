@@ -46,11 +46,12 @@ public class ParticipantService {
 	}
 
 	public Participant add(Participant participant) {
+		String hashedPassword = passwordEncoder.encode(participant.getPassword());
+		participant.setPassword(hashedPassword);
 		Transaction transaction = connector.getSession().beginTransaction();
 		connector.getSession().save(participant);
 		transaction.commit();
-		String hashedPassword = passwordEncoder.encode(participant.getPassword());
-		participant.setPassword(hashedPassword);
+
 		return participant;
 	}
 
